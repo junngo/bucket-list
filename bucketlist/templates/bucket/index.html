@@ -1,0 +1,9 @@
+{% if bucket_list %}
+    {% for bucket in bucket_list %}
+        <ul>
+            <li><a href="{% url 'buckets:detail' bucket.id %}">{{bucket.my_wish}}</a></li>
+        </ul>
+    {% endfor %}
+{% else %}
+    <p>No buckets</p>
+{% endif %}
