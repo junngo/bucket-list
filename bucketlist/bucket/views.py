@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.template import loader
 from .models import Bucket
 
@@ -18,4 +18,7 @@ def index(request):
 
 
 def detail(request, bucket_id):
-    return HttpResponse("You're looking at bucket %s." % bucket_id)
+    bucket = get_object_or_404(Bucket, pk=bucket_id)
+
+    # return HttpResponse("You're looking at bucket %s." % bucket_id)
+    return render(request, 'bucket/detail.html', {'bucket': bucket})

@@ -1,0 +1,19 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bucket/bucket_detail.css' %}">
+
+</head>
+<body>
+    <div class="outclass">
+        <div class="out1">{{ bucket.my_wish }}</div>
+        <div class="out2">{{ bucket.creator }}</div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+.detail_creator {
+  font-size: 50px;
+}
+  
+body {
+  background-color: yellow;
+}
+  
+body {
+  background-color: blue;
+}
+
+.outclass {
+  height: 30vh;
+  position: relative;
+  background-color: yellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.out1 {
+  position: absolute;
+  top: 20px;
+  background-color: blueviolet;
+}
+  
+.out2 {
+  background-color:white;
+}
+
+.outclass .out2 {
+  padding: 10px 30px;
+  width: 80%;
+  position: relative;
+  box-shadow: 0 7px 20px rgba(50, 50, 93, 0.1), 0 3px 20px rgba(0, 0, 0, 0.08);
+  top: 140px;
+  display: flex;
+  justify-content: center;
+}
+
+.input_box {
+  margin-top: 50px;
+}
