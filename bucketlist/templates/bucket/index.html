@@ -20,9 +20,11 @@
         <p>No buckets</p>
     {% endif %}
 
-    <!-- <form>
-        <input type="text">
+    <form action="/bucket/"" method='POST'>
+        {% csrf_token %}
+        <input type="text" name="input_bucket" placeholder="writing your bucket-list">
         <input type="submit" value="Input">
-    </form> -->
+    </form>
+
 </body>
 </html>
