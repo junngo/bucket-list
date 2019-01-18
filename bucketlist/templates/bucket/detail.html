@@ -10,10 +10,20 @@
 
 </head>
 <body>
-    <div class="outclass">
-        <div class="out1">{{ bucket.my_wish }}</div>
-        <div class="out2">{{ bucket.creator }}</div>
-    </div>
+    <form action="/bucket/" method='POST'>
+        {% csrf_token %}
 
+        <div class="outclass">
+            <div class="out1">{{ bucket.my_wish }}</div>
+            <div class="out2">{{ bucket.creator }}</div>
+            <div class="out2">{{ bucket.completed }}</div>
+            <input type="checkbox" value="{{bucket.id}}" name="input_completed">
+        </div>
+
+        <div class="form_div">
+            <input type="submit" value="Input">
+        </div>
+
+    </form>
 </body>
 </html>

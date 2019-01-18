@@ -3,10 +3,6 @@
 }
   
 body {
-  background-color: yellow;
-}
-  
-body {
   background-color: blue;
 }
 
@@ -40,6 +36,6 @@ body {
   justify-content: center;
 }
 
-.input_box {
-  margin-top: 50px;
+.form_div {
+  margin-top: 200px;
 }

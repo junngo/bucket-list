@@ -13,14 +13,24 @@
     {% if bucket_list %}
         {% for bucket in bucket_list %}
         <ul>
-            <li><a href="{% url 'buckets:detail' bucket.id %}">{{bucket.my_wish}}</a></li>
+            <li> 
+                {% if bucket.completed == False %}
+                    <a href="{% url 'buckets:detail' bucket.id %}">{{bucket.my_wish}}</a>
+                {% else %}
+                    <span class="completed_bucket">
+                        <a href="{% url 'buckets:detail' bucket.id %}">
+                            {{bucket.my_wish}}
+                        </a>
+                    </span>
+                {% endif %}
+            </li>
         </ul>
         {% endfor %}
     {% else %}
         <p>No buckets</p>
     {% endif %}
 
-    <form action="/bucket/"" method='POST'>
+    <form action="/bucket/" method='POST'>
         {% csrf_token %}
         <input type="text" name="input_bucket" placeholder="writing your bucket-list">
         <input type="submit" value="Input">

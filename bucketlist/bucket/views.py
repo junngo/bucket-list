@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404
 from django.template import loader
 from .models import Bucket
 from . import models
@@ -14,11 +14,12 @@ def index(request):
 
         new_bucket = models.Bucket.objects.create(
             my_wish = input_bucket,
-            creator = user
+            creator = user,
+            completed = False,
         )
         new_bucket.save
 
-        return redirect('/bucket/')
+        return HttpResponseRedirect('/bucket/')
 
     else:
         """ GET """
@@ -35,7 +36,15 @@ def index(request):
 
 
 def detail(request, bucket_id):
-    bucket = get_object_or_404(Bucket, pk=bucket_id)
 
-    # return HttpResponse("You're looking at bucket %s." % bucket_id)
-    return render(request, 'bucket/detail.html', {'bucket': bucket})
+    if request.method == 'POST':
+        """ POST """
+        pass
+
+    else:
+        """ GET """
+
+        bucket = get_object_or_404(Bucket, pk=bucket_id)
+
+        # return HttpResponse("You're looking at bucket %s." % bucket_id)
+        return render(request, 'bucket/detail.html', {'bucket': bucket})

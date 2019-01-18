@@ -18,7 +18,9 @@ class Bucket(TimeStampedModel):
 
     my_wish = models.CharField(max_length=140)
     memo = models.TextField(null=True, blank=True)
+    completed = models.BooleanField(default=False)
     creator = models.ForeignKey(user_models.User, null=True, on_delete=models.CASCADE, related_name='buckets')
+    
 
     def __str__(self):
         return self.my_wish
