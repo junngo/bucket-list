@@ -10,18 +10,23 @@
 
 </head>
 <body>
-    <form action="/bucket/" method='POST'>
+    <form action="/bucket/{{ bucket.id }}/" method='POST'>
         {% csrf_token %}
 
         <div class="outclass">
             <div class="out1">{{ bucket.my_wish }}</div>
             <div class="out2">{{ bucket.creator }}</div>
             <div class="out2">{{ bucket.completed }}</div>
-            <input type="checkbox" value="{{bucket.id}}" name="input_completed">
+            
+            {% if bucket.completed == True %}
+                <input type="checkbox" name="input_completed" value="{{ bucket.id }}" checked="checked" disabled>
+            {% else %}
+                <input type="checkbox" name="input_completed" value="{{ bucket.id }}">
+            {% endif %}
         </div>
 
         <div class="form_div">
-            <input type="submit" value="Input">
+            <input type="submit" value="Apply">
         </div>
 
     </form>

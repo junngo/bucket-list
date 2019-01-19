@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, Http404
 from django.template import loader
 from .models import Bucket
 from . import models
@@ -39,12 +39,24 @@ def detail(request, bucket_id):
 
     if request.method == 'POST':
         """ POST """
-        pass
+        input_bucket_completed = request.POST.get('input_completed', None)
+        print(input_bucket_completed)
+
+        if input_bucket_completed != None:
+            try:
+                bucket = models.Bucket.objects.get(pk=input_bucket_completed)
+
+            except models.Bucket.DoesNotExist:
+                raise Http404("Question does not exist")
+
+            bucket.completed = True
+            bucket.save()
+
+        return HttpResponseRedirect('/bucket/')
 
     else:
         """ GET """
 
         bucket = get_object_or_404(Bucket, pk=bucket_id)
 
-        # return HttpResponse("You're looking at bucket %s." % bucket_id)
         return render(request, 'bucket/detail.html', {'bucket': bucket})
